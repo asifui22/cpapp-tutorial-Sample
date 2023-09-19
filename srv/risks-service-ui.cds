@@ -87,3 +87,22 @@ annotate RiskService.Risks with {
         }
     });
 }
+
+annotate RiskService.Risks with @(
+    //=================================================================
+    //      Classification -> UI HeaderInfo as
+    //                         Administrative Information
+    //=================================================================
+    UI.HeaderFacets                         : [{
+        $Type : 'UI.ReferenceFacet',
+        ID    : 'AdministrativeInformation',
+        Label : '{i18n>AdministrativeInformation}',
+        Target: '@UI.FieldGroup#AdministrativeInformation',
+    }, ],
+    UI.FieldGroup #AdministrativeInformation: {Data: [
+        {Value: createdAt},
+        {Value: createdBy},
+        {Value: modifiedAt},
+        {Value: modifiedBy}
+    ]},
+);
